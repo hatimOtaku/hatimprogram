@@ -98,7 +98,7 @@ footer b{display:block;font:400 40px Anton;color:var(--ink);text-transform:upper
   <p>Lean out a little while keeping your strength, drive and pumps. No crash diet, no hormone-killing deficit. This is the whole playbook.</p>
   <div class="stats">
     <div><b>180 cm</b><span>height</span></div><div><b>75 kg</b><span>start weight</span></div>
-    <div><b>~2,500</b><span>kcal / day</span></div><div><b>5 days</b><span>lifting / week</span></div>
+    <div><b>~2,500</b><span>kcal / day</span></div><div><b>4 days</b><span>lifting / week</span></div>
   </div>
 </div></header>
 
@@ -110,50 +110,45 @@ const NAV=[['start','Start'],['eat','Eat'],['train','Train'],['pump','Pumps'],['
 
 /* ================= DATA ================= */
 const DAYS=[
- {d:'Mon',t:'Push',s:'Chest · shoulders · triceps · 70 min',x:[
-  ['Incline dumbbell press','4 × 6–8','Heaviest lift of the day. 2 min rest. Stop 1 rep before failure.'],
-  ['Flat machine or barbell press','3 × 8–10','Control the lowering for 2–3 seconds.'],
+ {d:'Mon',t:'Upper A',s:'Strength focus · chest, back, shoulders, arms · 75 min',x:[
+  ['Incline dumbbell press','4 × 5–8','Heaviest lift of the day. 2–3 min rest. Stop 1 rep before failure.'],
+  ['Weighted pull-up or lat pulldown','4 × 6–8','Elbows to hips, chest to the bar.'],
   ['Seated dumbbell shoulder press','3 × 8–10','Full range, ribs down.'],
-  ['Cable lateral raise','4 × 12–15','Light, strict. Last set add a drop set.'],
-  ['Cable fly (low to high)','3 × 12–15','Hold the stretch 1 second at the bottom.'],
-  ['Overhead rope triceps extension','3 × 10–12','Long head loves the stretch.'],
-  ['Pushdown + dips superset','2 × to failure','Pump finisher.']]},
- {d:'Tue',t:'Pull',s:'Back · rear delts · biceps · 70 min',x:[
-  ['Weighted pull-up or lat pulldown','4 × 6–8','Pull elbows to hips, chest to the bar.'],
-  ['Chest-supported row','4 × 8–10','No body English. Squeeze 1 second.'],
-  ['Single-arm cable pulldown','3 × 10–12','Big stretch at the top.'],
-  ['Face pull','3 × 15–20','Rear delts and posture.'],
-  ['Incline dumbbell curl','3 × 10–12','Stretched biceps position.'],
-  ['Hammer curl','3 × 10–12','Forearms and brachialis.'],
-  ['Straight-arm pulldown','2 × 15','Lat pump to finish.']]},
- {d:'Wed',t:'Legs',s:'Quads · hamstrings · calves · 75 min',x:[
-  ['Back squat or hack squat','4 × 5–8','Deep, controlled. This is your hardest day.'],
+  ['Chest-supported row','3 × 8–10','No body English. Squeeze 1 second.'],
+  ['Cable lateral raise','3 × 12–15','Strict. Last set: drop set.'],
+  ['Incline dumbbell curl + overhead rope extension','3 × 10–12 superset','Stretched positions for biceps and triceps.'],
+  ['Face pull','2 × 15–20','Rear delts and posture.']]},
+ {d:'Tue',t:'Lower A',s:'Quad focus · squats, legs, calves, abs · 75 min',x:[
+  ['Back squat or hack squat','4 × 5–8','Deep and controlled. Your hardest lift.'],
   ['Romanian deadlift','3 × 8–10','Hamstring stretch, flat back.'],
   ['Leg press','3 × 10–15','Feet low and narrow for quads.'],
-  ['Lying leg curl','3 × 10–12','Slow 3-second negative.'],
+  ['Lying leg curl','3 × 10–12','3-second negative.'],
   ['Walking lunge','2 × 12 per leg','Burnout.'],
   ['Standing calf raise','4 × 8–12','Pause 2 seconds at the bottom.'],
   ['Hanging leg raise','3 × 10–15','Abs.']]},
- {d:'Thu',t:'Upper',s:'Strength + pump · 65 min',x:[
-  ['Overhead press (barbell)','4 × 5–6','Strength focus. Belt optional.'],
-  ['Weighted pull-up','4 × 5–6','Chase small load jumps.'],
-  ['Incline machine press','3 × 10–12','Pump work starts here.'],
-  ['Cable row, wide grip','3 × 10–12','Upper back thickness.'],
-  ['EZ-bar curl','3 × 8–10','Strict.'],
-  ['Skullcrusher','3 × 8–10','Elbows in.'],
-  ['Lateral raise, myo-reps','1 × 15 + 4 × 5','Rest 10 s between mini-sets.']]},
- {d:'Fri',t:'Lower + arms',s:'Glutes · hamstrings · arms · 65 min',x:[
-  ['Conventional or trap-bar deadlift','3 × 4–6','Skip if Wednesday left you cooked.'],
-  ['Bulgarian split squat','3 × 8–10 per leg','Slow descent.'],
-  ['Seated leg curl','3 × 10–12','Squeeze at the peak.'],
-  ['Hip thrust','3 × 8–10','Pause 1 second.'],
-  ['Cable curl + cable pushdown','4 × 12–15 superset','Arm pump.'],
-  ['Seated calf raise','3 × 12–15','Burn.'],
-  ['Cable crunch','3 × 12–15','Weighted abs.']]},
- {d:'Sat',t:'Cardio + Core',s:'Easy day · 40–50 min',x:[
-  ['Zone-2 incline walk or bike','30–40 min','Nose-breathing pace. Fat burn without wrecking recovery.'],
+ {d:'Wed',t:'Cardio',s:'Easy day · 40 min',x:[
+  ['Zone-2 incline walk or bike','30–40 min','Nose-breathing pace. Burns fat without hurting recovery.'],
   ['Plank variations','3 × 45–60 s','Abs.'],
   ['Mobility + stretching','10 min','Hips, thoracic spine, shoulders.']]},
+ {d:'Thu',t:'Upper B',s:'Pump and volume · chest, back, delts, arms · 70 min',x:[
+  ['Overhead press (barbell)','3 × 5–6','Strength movement to open the day.'],
+  ['Flat machine or barbell press','3 × 8–10','Slow 2–3 s negative.'],
+  ['Single-arm cable pulldown','3 × 10–12','Big stretch at the top.'],
+  ['Cable row, wide grip','3 × 10–12','Upper back thickness.'],
+  ['Cable fly (low to high)','3 × 12–15','Hold the stretch 1 second.'],
+  ['Lateral raise, myo-reps','1 × 15 + 4 × 5','Rest 10 s between mini-sets.'],
+  ['EZ-bar curl + pushdown','3 × 12–15 superset','Pump finisher. Add a rest-pause on the last set.']]},
+ {d:'Fri',t:'Lower B',s:'Posterior focus · glutes, hamstrings, calves · 70 min',x:[
+  ['Conventional or trap-bar deadlift','3 × 4–6','Brace hard. Skip the top set if Tuesday left you cooked.'],
+  ['Bulgarian split squat','3 × 8–10 per leg','Slow descent.'],
+  ['Hip thrust','3 × 8–10','Pause 1 second at the top.'],
+  ['Seated leg curl','3 × 10–12','Squeeze at the peak.'],
+  ['Leg extension','2 × 12–15','Quad pump.'],
+  ['Seated calf raise','3 × 12–15','Burn.'],
+  ['Cable crunch','3 × 12–15','Weighted abs.']]},
+ {d:'Sat',t:'Cardio',s:'Optional easy day · 30–40 min',x:[
+  ['Zone-2 walk, bike or swim','30–40 min','Conversation pace. Skip if you\'re beat; steps still count.'],
+  ['Mobility','10 min','Hips and shoulders.']]},
  {d:'Sun',t:'Off',s:'Real rest',x:[
   ['Walk','8–10k steps','No lifting. Eat at maintenance.'],
   ['Meal prep + plan the week','—','Good week = good prep.']]}
@@ -289,10 +284,10 @@ function render(){
  `<div class="macros"><div class="mc"><b>2,500</b><span>kcal on training days</span></div><div class="mc"><b>160 g</b><span>protein (2.1 g/kg)</span></div><div class="mc"><b>290 g</b><span>carbs</span></div><div class="mc"><b>75 g</b><span>fat (1 g/kg)</span></div><div class="mc"><b>2,850</b><span>kcal high day (weekly)</span></div></div>
   <table class="table"><tr><th>When</th><th>What</th></tr>${EAT.map(e=>`<tr><td>${e[0]}</td><td>${e[1]}</td></tr>`).join('')}</table>
   <div class="box"><h3>Food list</h3><p class="mute"><b style="color:var(--ink)">Protein:</b> chicken, turkey, lean beef, eggs, fish, Greek yogurt, whey. <b style="color:var(--ink)">Carbs:</b> rice, potatoes, oats, fruit, bread, pasta, honey. <b style="color:var(--ink)">Fat:</b> olive oil, nuts, egg yolks, salmon, avocado. <b style="color:var(--ink)">Veg:</b> anything green, as much as you want. 80% whole foods, 20% whatever you enjoy.</p></div>`)
- +sec('train','03 · Training','The <em>split.</em>','5 days lifting, 1 easy cardio day, 1 rest day. Tap a day. Stop 1–2 reps before failure unless noted.',
+ +sec('train','03 · Training','The <em>split.</em>','4 days lifting (upper / lower twice a week), 2 easy cardio days, 1 rest day. Tap a day. Stop 1–2 reps before failure unless noted.',
  `<div class="tabs">${DAYS.map((d,i)=>`<button class="tab ${i===dayIdx?'on':''}" data-d="${i}">${d.d} · ${d.t}</button>`).join('')}</div><div class="panel" id="day"></div>
   <div class="box"><h3>12-week structure</h3><table class="table">${BLOCKS.map(b=>`<tr><td>${b[0]}</td><td><b>${b[1]}.</b> ${b[2]}</td></tr>`).join('')}</table></div>
-  <div class="box"><h3>Daily extras</h3><ul class="l"><li>8–10k steps daily. Non-negotiable for leaning out.</li><li>Zone-2 cardio: 2 sessions a week, 30–40 min, not after legs.</li><li>Log every set. Beat last week.</li></ul></div>`)
+  <div class="box"><h3>Daily extras</h3><ul class="l"><li>8–10k steps daily. Non-negotiable for leaning out.</li><li>Zone-2 cardio: 2 sessions a week (Wed, Sat), 30–40 min.</li><li>Log every set. Beat last week.</li></ul></div>`)
  +sec('pump','04 · Gym pumps','Pump <em>protocol.</em>','The routine to walk in already pumped and make every session count.',
  `<table class="table"><tr><th>Step</th><th>Do this</th></tr>${PUMP.map(e=>`<tr><td>${e[0]}</td><td>${e[1]}</td></tr>`).join('')}</table>`)
  +sec('hacks','05 · Hacks','The <em>edge.</em>','Everything below works. No myths, no snake oil. Pick a tab.',
