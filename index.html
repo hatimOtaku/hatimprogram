@@ -108,7 +108,7 @@ footer b{display:block;font:400 40px Anton;color:var(--ink);text-transform:upper
 
 <script>
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
-const NAV=[['start','Start'],['eat','Eat'],['train','Train'],['pump','Pumps'],['hacks','Hacks'],['supps','Supps'],['rules','Rules']];
+const NAV=[['start','Start'],['eat','Eat'],['train','Train'],['iso','Isometrics'],['pump','Pumps'],['hacks','Hacks'],['supps','Supps'],['rules','Rules']];
 
 /* ================= DATA ================= */
 const DAYS=[
@@ -262,6 +262,59 @@ const SUPPS=[
  ['C','Fat burners, "thermogenics"','Caffeine in a fancy tub. Skip.'],
  ['C','BCAAs','Useless if you hit your protein.']];
 
+const ISO_WHY=[
+ ['s','Overcoming = max strength','Push or pull as hard as you can against something that won\'t move (pins, strap, wall). You recruit every motor unit you have, at 100% intent, with zero risk of failing a rep.'],
+ ['s','Long muscle length wins','Isometrics in the stretched position build more muscle and carry over better to real lifts than holds in the short position.'],
+ ['s','Train 2–3 angles','Isometric strength is strongest near the angle you trained. Hit the bottom, the sticking point and near-lockout of each lift to cover the full range.'],
+ ['s','Explode into it','Ballistic intent ("hit it as fast as you can, then keep pushing") builds rate of force development, meaning how fast you produce strength.'],
+ ['s','Tendons need ≥70% effort','Heavy holds strengthen tendons, which makes joints more resilient and transfers force better.'],
+ ['m','Almost no soreness','No lowering phase means very little muscle damage. You can train hard 3–4× a week and still recover for everything else.'],
+ ['m','Measure your force','Hang a cheap 300 kg crane scale between a strap and the floor or rack. Strength becomes a number you can beat every week.'],
+ ['m','Bonus: blood pressure','In a 2023 meta-analysis of 270 trials, isometric training (especially wall sits) lowered blood pressure more than any other exercise type.']];
+
+const ISO_DAYS=[
+ {t:'A · Legs',s:'25–30 min · rack + pins or a belt strap',x:[
+  ['Overcoming pin squat (3 angles)','3 × 2 × 5 s','Bar against pins: deep, sticking point, quarter squat. Ramp up over 1 s, then 100% for 5 s. 90 s rest.'],
+  ['Mid-thigh pull','5 × 5 s','Bar against pins at mid-thigh, or a strap under your feet. Pull like you\'re ripping it out of the rack.'],
+  ['Split squat bottom hold','3 × 30–45 s per leg','Back knee 2 cm off the floor, dumbbells in hand. Long-length quads and glutes.'],
+  ['Single-leg RDL hold','3 × 30 s per leg','Hold at the deepest hamstring stretch you control.'],
+  ['Wall sit','2 × 2 min','Thighs parallel. Breathe steadily the whole time.']]},
+ {t:'B · Push',s:'25–30 min · bench + rack pins',x:[
+  ['Overcoming pin press (3 angles)','3 × 2 × 5 s','Bar against pins 3 cm off the chest, at your sticking point, and just short of lockout. 100% for 5 s.'],
+  ['Overhead pin press','4 × 5 s','Pins at forehead height. Brace your glutes and abs, push through the ceiling.'],
+  ['Deep push-up hold','3 × 30–45 s','On handles or dumbbells, chest below your hands. Add a plate on your back when it\'s easy.'],
+  ['Dip bottom hold','3 × 20–30 s','Shoulders slightly below elbows, controlled stretch.'],
+  ['Lateral raise hold','3 × 30 s','Arms at shoulder height, light dumbbells. Burns.']]},
+ {t:'C · Pull + core',s:'25–30 min · bar + strap',x:[
+  ['Overcoming row','4 × 5 s','Strap or bar under fixed pins at mid-pull. Drive elbows back as hard as you can.'],
+  ['Flexed-arm hang','3 × max (20–40 s)','Chin above the bar, add weight when you pass 40 s.'],
+  ['Weighted dead hang','3 × 45–60 s','Long-length lats and a monster grip. Shoulders active, not shrugged.'],
+  ['Overcoming curl at 90°','4 × 5 s','Strap under your feet, elbows at 90°, curl against it with full force.'],
+  ['Hollow body hold + side plank','3 × 30 s / 2 × 45 s','Lower back glued to the floor on the hollow hold.']]},
+ {t:'Daily dose',s:'5 min · any day, anywhere',x:[
+  ['Dead hang','1–2 min','Shoulders and grip. Accumulate through the day.'],
+  ['Wall sit','2 min','Legs and blood pressure.'],
+  ['Hollow hold','30–45 s','Core.'],
+  ['Doorframe press','3 × 5 s','Hands on a doorframe, press up at full effort. Zero equipment.']]}
+];
+
+const ISO_PLAN=[
+ ['Weeks 1–2','Learn the positions at 70–80% effort. Find your pin heights and write them down.'],
+ ['Weeks 3–6','100% intent on every overcoming rep. Log the crane-scale number. Stop a set when force drops more than 10%.'],
+ ['Week 7','Add a 4th rep on overcoming lifts, and 10 s to every long-length hold.'],
+ ['Week 8','Light week. Then test: a dynamic 3-rep max and your scale numbers. Expect both to be up.']];
+
+const ISO_RULES=[
+ 'Never jerk into a max effort. Ramp up over about 1 second, then go to 100%.',
+ 'Breathe. A short brace is fine for 5-second efforts; on long holds, keep breathing. Holding your breath spikes blood pressure.',
+ 'Sharp or joint pain means stop. Effort and burn are fine.',
+ 'If you have high blood pressure or a heart condition, check with a doctor before max-effort isometrics.'];
+
+const ISO_SRC=[
+ ['Isometric training and long-term adaptations: systematic review (Oranchuk 2019)','https://pubmed.ncbi.nlm.nih.gov/30580468/'],
+ ['Exercise for blood pressure: network meta-analysis, isometrics ranked best (Edwards 2023)','https://www.healio.com/news/primary-care/20230817/running-wall-sits-most-effective-exercises-for-high-blood-pressure'],
+ ['Holding vs pushing isometric actions are physiologically different (Schaefer & Bittmann 2017)','https://bmcsportsscimedrehabil.biomedcentral.com/track/pdf/10.1186/s13102-017-0075-z']];
+
 const RULES=[
  'Never skip warm-up sets. A tweaked joint costs weeks, a warm-up costs 4 minutes.',
  'No steroids, SARMs, or "research chemicals." The risks are real: shutdown, heart, fertility. If you ever consider hormones, do it only with blood tests and a doctor.',
@@ -273,7 +326,7 @@ const RULES=[
  'Track everything for 12 weeks. Log lifts, weight, waist, sleep, steps.'];
 
 /* ================= RENDER ================= */
-let dayIdx=Math.max(0,(new Date().getDay()+6)%7), hk='Pumps';
+let dayIdx=Math.max(0,(new Date().getDay()+6)%7), hk='Pumps', isoIdx=0;
 const sec=(id,tag,h,lead,body)=>`<section id="${id}"><div class="wrap"><div class="tag">${tag}</div><h2>${h}</h2>${lead?`<p class="lead">${lead}</p>`:''}${body}</div></section>`;
 function render(){
  $('#links').innerHTML=NAV.map(n=>`<a href="#${n[0]}">${n[1]}</a>`).join('');
@@ -290,19 +343,31 @@ function render(){
  `<div class="tabs">${DAYS.map((d,i)=>`<button class="tab ${i===dayIdx?'on':''}" data-d="${i}">${d.d} · ${d.t}</button>`).join('')}</div><div class="panel" id="day"></div>
   <div class="box"><h3>12-week structure</h3><table class="table">${BLOCKS.map(b=>`<tr><td>${b[0]}</td><td><b>${b[1]}.</b> ${b[2]}</td></tr>`).join('')}</table></div>
   <div class="box"><h3>Daily extras</h3><ul class="l"><li>8–10k steps daily. Non-negotiable for leaning out.</li><li>Zone-2 cardio: 2 sessions a week (Wed, Sat), 30–40 min.</li><li>Log every set. Beat last week.</li></ul></div>`)
- +sec('pump','04 · Gym pumps','Pump <em>protocol.</em>','The routine to walk in already pumped and make every session count.',
+ +sec('iso','04 · Isometrics','Iso<em>max.</em>','No reps, no momentum, no failed lifts. Push and pull against things that don\'t move at 100% effort, and hold the stretched position under load. Run it on its own (3 sessions a week) or add it to your lifting days.',
+ `<div class="tips">${ISO_WHY.map(w=>`<div class="tip"><h4><b>${w[0]==='s'?'PROVEN':'SOLID'}</b>${w[1]}</h4><p>${w[2]}</p></div>`).join('')}</div>
+  <div class="box"><h3>Two kinds of isometric</h3><table class="table"><tr><td>Overcoming</td><td><b>Push or pull into something immovable</b> at 100% for 3–6 s, 3–5 reps, 90 s–2 min rest. Builds max strength and speed of force.</td></tr><tr><td>Yielding</td><td><b>Hold a weight still</b>, ideally in the stretched position, for 20–60 s. Builds muscle, tendons and control.</td></tr></table></div>
+  <div class="tabs" style="margin-top:28px">${ISO_DAYS.map((d,i)=>`<button class="tab ${i===isoIdx?'on':''}" data-i="${i}">${d.t}</button>`).join('')}</div><div class="panel" id="isoP"></div>
+  <div class="box"><h3>8-week progression</h3><table class="table">${ISO_PLAN.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('')}</table></div>
+  <div class="box"><h3>Plug it into your lifting</h3><ul class="l"><li>Upper days: before your first press, 3 × 5 s overcoming pin press at your sticking point, rest 2 min, then lift.</li><li>Lower days: 3 × 5 s overcoming pin squat at your sticking point before squats.</li><li>Finish one session a week with a 2-minute wall sit and a max dead hang.</li><li>Iso-only weeks are a great deload: joints get a break, strength stays up.</li></ul></div>
+  <div class="box"><h3>Gear</h3><ul class="l"><li>Power rack with safety pins, or an isometric belt/strap (cheap, works at home)</li><li>300 kg crane or luggage scale to measure force</li><li>Lifting straps or a towel, pull-up bar, dumbbells</li></ul></div>
+  ${ISO_RULES.map(r=>`<div class="rule">${r}</div>`).join('')}
+  <ul class="l small" style="margin-top:18px">${ISO_SRC.map(x=>`<li><a href="${x[1]}" target="_blank" rel="noopener" style="color:var(--acc)">${x[0]}</a></li>`).join('')}</ul>`)
+ +sec('pump','05 · Gym pumps','Pump <em>protocol.</em>','The routine to walk in already pumped and make every session count.',
  `<table class="table"><tr><th>Step</th><th>Do this</th></tr>${PUMP.map(e=>`<tr><td>${e[0]}</td><td>${e[1]}</td></tr>`).join('')}</table>`)
- +sec('hacks','05 · Hacks','The <em>edge.</em>','Everything below works. No myths, no snake oil. Pick a tab.',
+ +sec('hacks','06 · Hacks','The <em>edge.</em>','Everything below works. No myths, no snake oil. Pick a tab.',
  `<div class="tabs">${Object.keys(HACKS).map(k=>`<button class="tab ${k===hk?'on':''}" data-h="${k}">${k}</button>`).join('')}</div><div class="tips" id="tips"></div>`)
- +sec('supps','06 · Supplements','Tier <em>list.</em>','Food and sleep first. These are the add-ons, ranked by evidence.',
+ +sec('supps','07 · Supplements','Tier <em>list.</em>','Food and sleep first. These are the add-ons, ranked by evidence.',
  SUPPS.map(s=>`<div class="tier ${s[0]==='C'?'c':''}"><b>${s[0]}</b><div><b>${s[1]}</b><br><span class="mute small">${s[2]}</span></div></div>`).join(''))
- +sec('rules','07 · Rules','Don\'t <em>break these.</em>','',
+ +sec('rules','08 · Rules','Don\'t <em>break these.</em>','',
  RULES.map(r=>`<div class="rule">${r}</div>`).join(''))
  +`<footer><div class="wrap"><b>Now go lift.</b>General fitness guidance, not medical advice. If you have a health condition or take medication, check with a doctor.</div></footer>`;
  $$('[data-d]').forEach(b=>b.onclick=()=>{dayIdx=+b.dataset.d;$$('[data-d]').forEach(x=>x.classList.toggle('on',x===b));renderDay()});
  $$('[data-h]').forEach(b=>b.onclick=()=>{hk=b.dataset.h;$$('[data-h]').forEach(x=>x.classList.toggle('on',x===b));renderTips()});
- renderDay();renderTips();spy();
+ $$('[data-i]').forEach(b=>b.onclick=()=>{isoIdx=+b.dataset.i;$$('[data-i]').forEach(x=>x.classList.toggle('on',x===b));renderIso()});
+ renderDay();renderTips();renderIso();spy();
 }
+function renderIso(){const d=ISO_DAYS[isoIdx];
+ $('#isoP').innerHTML=`<h3>${d.t}</h3><p>${d.s}</p>`+d.x.map((x,i)=>`<div class="ex"><i>${String(i+1).padStart(2,'0')}</i><b>${x[0]}</b><span>${x[1]}</span><em>${x[2]}</em></div>`).join('')}
 function renderDay(){const d=DAYS[dayIdx];
  $('#day').innerHTML=`<h3>${d.t}</h3><p>${d.s}</p>`+d.x.map((x,i)=>`<div class="ex"><i>${String(i+1).padStart(2,'0')}</i><b>${x[0]}</b><span>${x[1]}</span><em>${x[2]}</em></div>`).join('')}
 function renderTips(){$('#tips').innerHTML=HACKS[hk].map((t,i)=>`<div class="tip"><h4><b>${String(i+1).padStart(2,'0')}</b>${t[0]}</h4><p>${t[1]}</p></div>`).join('')}
